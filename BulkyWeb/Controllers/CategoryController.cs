@@ -83,13 +83,8 @@ namespace BulkyWeb.Controllers
                 return NotFound();
             }
             _db.Categories.Remove(obj);
-           // if(ModelState.IsValid)
-            //{
-               // _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-          //  }
-           // return View() ;
         }
     }
 }
