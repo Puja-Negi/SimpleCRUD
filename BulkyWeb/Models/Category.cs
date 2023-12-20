@@ -8,7 +8,6 @@ namespace BulkyWeb.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        //validation
         [MaxLength(30)]
         [DisplayName("Category Name")]
         public string Name { get; set; }
