@@ -7,15 +7,27 @@ namespace BulkyWeb.Controllers
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly CategoryService _categoryService;
+        public CategoryController(ApplicationDbContext db, CategoryService categoryService)
         {
             _db = db;
+            _categoryService = categoryService;
         }
+        
         public IActionResult Index()
         {
             List<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
+
+        // Trigger real-time updates
+        public IActionResult TriggerUpdate(Category data)
+        {
+            _db.Categories.ToList(); // Fetch categories
+            _categoryService.SendUpdate(data); // Send the fetched categories as an update
+            return Ok();
+        }
+
 
         public IActionResult Create()
         {
