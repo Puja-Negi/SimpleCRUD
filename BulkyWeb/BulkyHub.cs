@@ -27,34 +27,9 @@ namespace BulkyWeb
             }
         }
 
-        private async Task<Category?> GetUpdatedCategory(int categoryId)
+        private Task<Category> GetUpdatedCategory(int categoryId)
         {
-            try
-            {
-                // Retrieve the category by its Id using ApplicationDbContext
-                var category = await _dbContext.Categories.FindAsync(categoryId);
-
-                // If the category exists, return it
-                if (category != null)
-                {
-                    return category;
-                }
-                else
-                {
-                    // If the category with the given Id doesn't exist
-                    // Handle the scenario according to your requirements
-                    // For example, throw an exception or return null
-                    // This part depends on how you want to handle this case
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions or errors during data retrieval
-                // Log the exception or perform error handling as required
-                Console.WriteLine($"Error fetching category: {ex.Message}");
-                return null; // Return null or handle the error condition appropriately
-            }
+            throw new NotImplementedException();
         }
     }
 }
